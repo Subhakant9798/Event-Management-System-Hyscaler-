@@ -1,0 +1,223 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/bootstrap.min.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/font-awesome.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/owl-carousel.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/tooplate-artxibition.css')}}">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+
+    #admin,
+    #users,
+    #events,
+    #participants {
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ***** Pre Header ***** -->
+  <div class="pre-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <span>Hey! The Show Is Starting In 5 Days.</span>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="text-button">
+            <a href="#contactus">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'navbar.html' %}
+  <div class="page-heading-rent-venue">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Hey wanna check our popularity?</h2>
+          <span>Here we present you our dashboard. Have a look at it and decide accordingly!! </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <main>
+    <div id="participants">
+      <center>
+        <h2>Participants</h2>
+        <h2><span id="participants-count">0</span></h2>
+      </center>
+
+    </div><br>
+
+    <div id="events">
+      <center>
+        <h2>Events</h2>
+        <h2><span id="events-count">0</span></h2>
+      </center>
+
+    </div><br>
+    <div id="admin">
+      <center>
+        <h2>Admin</h2>
+        <h2><span id="admin-count">0</span></h2>
+      </center>
+      <!-- Add content for admin section -->
+    </div><br>
+
+    <div id="users">
+      <center>
+        <h2>Users</h2>
+        <h2><span id="users-count">0</span></h2>
+      </center>
+    </div><br>
+  </main>
+
+  <!-- *** Subscribe *** -->
+  <div class="subscribe">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4>Subscribe Our Newsletter:</h4>
+        </div>
+        <div class="col-lg-8">
+          <form id="subscribe" action="" method="get">
+            <div class="row">
+              <div class="col-lg-9">
+                <fieldset>
+                  <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address"
+                    required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-3">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- *** Footer *** -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="address">
+            <h4>Saint Matthews Road</h4>
+            <span>Near to Cybercity <br>Sahidnagar, Bhubaneswar<br>Odisha, India</span>
+          </div>
+        </div>
+        <div class="col-lg-4" id = "contactus">
+          <div class="links" >
+            <h4>Contacts</h4>
+            <ul>
+              <li><a href="#">Ph- 0674-2583641</a></li>
+              <li><a href="#">mob- 9999888525</a></li>
+              <li><a href="#">email- event_wizard99@gmail.com</a></li>
+              <li><a href="#">Wiki- Event@Wizard.com</a></li>
+            </ul>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="hours">
+            <h4>Open Hours</h4>
+            <ul>
+              <li>Mon to Fri: 10:00 AM to 8:00 PM</li>
+              <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
+              <li>Holidays: Closed</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+</body>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='./js/jquery-2.1.0.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='./js/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/bootstrap.min.js') }}"></script>
+
+
+<!-- Plugins -->
+<script src="{{ url_for('static', filename='./js/scrollreveal.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/jquery.counterup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/imgfix.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/mixitup.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/accordions.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/owl-carousel.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/custom.js') }}"></script>
+
+<script>
+  // Get the target numbers from your Flask template
+  const targetAdmin = {{ no_of_admins }};
+  const targetUsers = {{ no_of_users }};
+  const targetEvents = {{ no_of_events }};
+  const targetParticipants = {{ no_of_parti[0][0] }};
+
+  // Get the span elements where the counts will be displayed
+  const adminCountElement = document.getElementById('admin-count');
+  const usersCountElement = document.getElementById('users-count');
+  const eventsCountElement = document.getElementById('events-count');
+  const participantsCountElement = document.getElementById('participants-count');
+
+  // Define the animation function
+  const countAnimation = (targetCount, countElement) => {
+    let count = 0;
+
+    const animateCount = () => {
+      count += 1;
+      countElement.textContent = count;
+
+      if (count < targetCount) {
+        setTimeout(animateCount, 100); // Adjust the delay (in milliseconds) to control the animation speed
+      }
+    };
+
+    animateCount();
+  };
+
+  // Start the count animations
+  countAnimation(targetAdmin, adminCountElement);
+  countAnimation(targetUsers, usersCountElement);
+  countAnimation(targetEvents, eventsCountElement);
+  countAnimation(targetParticipants, participantsCountElement);
+</script>

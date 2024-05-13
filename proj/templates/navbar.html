@@ -1,0 +1,58 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/bootstrap.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/font-awesome.css')}}">
+  
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/owl-carousel.css')}}">
+  
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/tooplate-artxibition.css')}}">
+</head>
+
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/home" class="logo">Event@<em>Wizard</em></a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="/home" class="active">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+
+                        {% if type == 'admin' %}
+                            <li><a href="/rent_venue">Create Event</a></li>
+                        {% endif %}
+
+                        <li><a href="/showevents">Shows & Events</a></li> 
+                        <li><a href="/tickets">Tickets</a></li> 
+                        <li><a href="/feedback">Feedback</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<script src="{{ url_for('static', filename='./js/jquery-2.1.0.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='./js/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/bootstrap.min.js') }}"></script>
+
+
+<!-- Plugins -->
+<script src="{{ url_for('static', filename='./js/scrollreveal.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/jquery.counterup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/imgfix.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/mixitup.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/accordions.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/owl-carousel.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/custom.js') }}"></script>

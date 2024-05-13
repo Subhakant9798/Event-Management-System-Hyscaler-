@@ -1,0 +1,184 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/bootstrap.min.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/font-awesome.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/owl-carousel.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/tooplate-artxibition.css')}}">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+</head>
+<!-- <br><br> -->
+
+<body>
+  <div class="pre-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <span>Hey! The Show Is Starting In 5 Days.</span>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="text-button">
+            <a href="#contactus">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'navbar.html' %}
+  <div class="page-heading-rent-venue">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Liked Our Event?</h2>
+          <span>Give us Your Feedback and Help Us To Improve!!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <BR><BR>
+  <div style="display: flex; justify-content: space-between;">
+    <!-- Feedback Form -->
+    <div
+      style="width: calc(50% - 10px); padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+      <h1 style="text-align: center; color: #333;">Event Feedback Form</h1><br>
+      <form action="take_feedback" method="post" style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px;">
+          <label for="name" style="display: block; font-weight: bold; margin-bottom: 5px;">Your Name:</label>
+          <input type="text" id="name" name="u_name" required
+            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label for="email" style="display: block; font-weight: bold; margin-bottom: 5px;">Your Email:</label>
+          <input type="text" id="email" name="u_email" required
+            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label for="feedback" style="display: block; font-weight: bold; margin-bottom: 5px;">Feedback:</label>
+          <textarea id="feedback" name="u_feedback" required
+            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; height: 150px;"></textarea>
+        </div>
+        <div style="text-align: center;">
+          <input type="submit" value="Submit Feedback"
+            style="background-color: #333; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        </div>
+      </form>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for msg in messages %}
+      <p>{{msg}}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+
+
+    <div
+      style="width: calc(50% - 10px); padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+      <!-- <h2 style="text-align: center; color: #333;">Feedback Received</h2> -->
+      <div id="feedbackDisplay" style="margin-top: 20px;">
+        {% for row in data %}
+
+        <fieldset style="border: 30px;">
+          <!-- <legend>Feedback</legend> -->
+          <h3>{{row[1]}}</h3>
+          <span style="font-size: 120%;"><strong>email:</strong></span> {{row[2]}} <br>
+          <span style="font-size: 120%;"><strong>Feedback:</strong></span> {{row[3]}} <br>
+          <br>
+          <hr color="black">
+        </fieldset>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- *** Subscribe *** -->
+  <div class="subscribe">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4>Subscribe Our Newsletter:</h4>
+        </div>
+        <div class="col-lg-8">
+          <form id="subscribe" action="" method="get">
+            <div class="row">
+              <div class="col-lg-9">
+                <fieldset>
+                  <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address"
+                    required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-3">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- *** Footer *** -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="address">
+            <h4>Saint Matthews Road</h4>
+            <span>Near to Cybercity <br>Sahidnagar, Bhubaneswar<br>Odisha, India</span>
+          </div>
+        </div>
+        <div class="col-lg-4" id = "contactus">
+          <div class="links">
+            <h4>Contacts</h4>
+            <ul>
+              <li><a href="#">Ph- 0674-2583641</a></li>
+              <li><a href="#">mob- 9999888525</a></li>
+              <li><a href="#">email- event_wizard99@gmail.com</a></li>
+              <li><a href="#">Wiki- Event@Wizard.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="hours">
+            <h4>Open Hours</h4>
+            <ul>
+              <li>Mon to Fri: 10:00 AM to 8:00 PM</li>
+              <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
+              <li>Holidays: Closed</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+</body>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='./js/jquery-2.1.0.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='./js/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/bootstrap.min.js') }}"></script>
+
+
+<!-- Plugins -->
+<script src="{{ url_for('static', filename='./js/scrollreveal.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/jquery.counterup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/imgfix.min.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/mixitup.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/accordions.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/owl-carousel.js') }}"></script>
+<script src="{{ url_for('static', filename='./js/custom.js') }}"></script>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <title>About Page</title>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/bootstrap.min.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/font-awesome.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/owl-carousel.css')}}">
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='./css/tooplate-artxibition.css')}}">
+
+    <style>
+        .content img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .header h1 {
+            color: #333;
+        }
+
+        .content h2 {
+            color: #333;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Pre HEader ***** -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                    <span>Hey! The Show Is Starting In 5 Days.</span>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="text-button">
+                        <a href="#contactus">Contact Us Now! <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    {% include 'navbar.html' %}
+    <!-- ***** Header Area End ***** -->
+    <br><br>
+    <div class="container"
+        style="width: 80%;margin: auto;overflow: hidden;background: white;padding: 20px;box-shadow: 0 0 10px #ccc;">
+        <div class="content">
+            <h2>Welcome to Event@Wizard</h2>
+            <p>Founded in 1999, Event@Wizard has been at the forefront of turning events into unforgettable experiences.
+                From corporate conferences to lavish weddings, our expert team ensures that every detail reflects your
+                vision perfectly.</p>
+            <br>
+            <img src="{{url_for('static',filename='./images/teamimage.jpg')}}" alt="Our Team">
+            <br><br>
+            <h4>We offer a full spectrum of event management services:</h4>
+
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="background: #e8e8e8; margin: 8px 0; padding: 10px; border-radius: 5px;">
+                    <h5>Event Planning</h5>
+                    <p>From venue selection to event design, we handle everything. Our planners ensure every aspect of
+                        your event is flawless.</p>
+                </li>
+                <li style="background: #e8e8e8; margin: 8px 0; padding: 10px; border-radius: 5px;">
+                    <h5>Vendor Coordination</h5>
+                    <p>Leveraging our vast network of suppliers and industry contacts, we secure the best catering,
+                        entertainment, and decor services at competitive prices.</p>
+                </li>
+                <li style="background: #e8e8e8; margin: 8px 0; padding: 10px; border-radius: 5px;">
+                    <h5>Technology Solutions</h5>
+                    <p>Our cutting-edge event management system simplifies the planning process, enabling you to track
+                        progress, manage guests, and more—all from a single dashboard.</p>
+                </li>
+                <li style="background: #e8e8e8; margin: 8px 0; padding: 10px; border-radius: 5px;">
+                    <h5>On-Site Management</h5>
+                    <p>Our experienced team ensures your event runs smoothly from start to finish, managing all
+                        logistics and onsite coordination.</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <br><br>
+
+
+    <!-- *** Subscribe *** -->
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4>Subscribe Our Newsletter:</h4>
+                </div>
+                <div class="col-lg-8">
+                    <form id="subscribe" action="" method="get">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <fieldset>
+                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
+                                        placeholder="Your Email Address" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-3">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-dark-button">Submit</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- *** Footer *** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="address">
+                        <h4>Saint Matthews Road</h4>
+                        <span>Near to Cybercity <br>Sahidnagar, Bhubaneswar<br>Odisha, India</span>
+                    </div>
+                </div>
+                <div class="col-lg-4" id = "contactus">
+                    <div class="links">
+                        <h4>Contacts</h4>
+                        <ul>
+                            <li><a href="#">Ph- 0674-2583641</a></li>
+                            <li><a href="#">mob- 9999888525</a></li>
+                            <li><a href="#">email- event_wizard99@gmail.com</a></li>
+                            <li><a href="#">Wiki- Event@Wizard.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="hours">
+                        <h4>Open Hours</h4>
+                        <ul>
+                            <li>Mon to Fri: 10:00 AM to 8:00 PM</li>
+                            <li>Sat - Sun: 11:00 AM to 4:00 PM</li>
+                            <li>Holidays: Closed</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='./js/jquery-2.1.0.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static', filename='./js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Plugins -->
+    <script src="{{ url_for('static', filename='./js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/imgfix.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/mixitup.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/accordions.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/custom.js') }}"></script>
+</body>
+
+</html>
