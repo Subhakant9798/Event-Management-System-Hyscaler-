@@ -6,8 +6,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(20)
 
-conn = mysql.connector.connect(
-    host="localhost", user="root", password="", database="eventmanage")
+conn = mysql.connector.connect(host="localhost", user="root", password="", database="eventmanage")
 cursor = conn.cursor()
 
 
@@ -162,7 +161,7 @@ def submit():
             cursor.execute("SELECT * FROM create_event")
             event_data = cursor.fetchall()
 
-            return render_template("rent-venue.html", data=event_data, type = session['user_id'])
+            return render_template("shows-events.html", data=event_data, type = session['user_id'])
         else:
             return "Something went wrong"
     else:
