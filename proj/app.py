@@ -6,7 +6,8 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(20)
 
-conn = mysql.connector.connect(host="localhost", user="root", password="", database="eventmanage")
+conn = mysql.connector.connect(
+    host="localhost", user="root", password="", database="eventmanage")
 cursor = conn.cursor()
 
 
@@ -27,7 +28,7 @@ def login():
 @app.route('/home')
 def home():
     if 'user_id' in session:
-        return render_template('index.html', type = session['user_id'])
+        return render_template('index.html', type=session['user_id'])
     else:
         return redirect('/')
 
@@ -43,7 +44,7 @@ def rent_venue():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM create_event")
         event_data = cursor.fetchall()
-        return render_template('rent-venue.html', data=event_data, type = session['user_id'])
+        return render_template('rent-venue.html', data=event_data, type=session['user_id'])
     else:
         return redirect('/')
 
@@ -51,7 +52,7 @@ def rent_venue():
 @app.route('/about')
 def about():
     if 'user_id' in session:
-        return render_template('about.html', type = session['user_id'])
+        return render_template('about.html', type=session['user_id'])
     else:
         return redirect('/')
 
@@ -62,7 +63,7 @@ def showevents():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM create_event")
         event_data = cursor.fetchall()
-        return render_template("shows-events.html", data=event_data, type = session['user_id'])
+        return render_template("shows-events.html", data=event_data, type=session['user_id'])
     else:
         return redirect('/')
 
@@ -73,7 +74,7 @@ def tickets():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM create_event")
         event_data = cursor.fetchall()
-        return render_template('tickets.html', data=event_data,type = session["user_id"])
+        return render_template('tickets.html', data=event_data, type=session["user_id"])
     else:
         return redirect('/')
 
@@ -84,10 +85,9 @@ def ticket_det(id):
         cursor = mysql.connection.cursor()
         cursor.execute(f"SELECT * FROM create_event WHERE id = {id}")
         event_data = cursor.fetchall()
-        return render_template('ticket-details.html', data=event_data, type = session['user_id'])
+        return render_template('ticket-details.html', data=event_data, type=session['user_id'])
     else:
         return redirect('/')
-
 
 
 @app.route('/feedback')
@@ -96,7 +96,7 @@ def feedback():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM feedback")
         feedback_data = cursor.fetchall()
-        return render_template("feedback.html", data=feedback_data, type = session['user_id'])
+        return render_template("feedback.html", data=feedback_data, type=session['user_id'])
     else:
         return redirect('/')
 
@@ -129,14 +129,15 @@ def register_accnt():
         reg_user = request.form["reg_username"]
         reg_mail = request.form["reg_email"]
         reg_pass = request.form["reg_password"]
-    
-        cursor.execute("SELECT * FROM regis_table WHERE EMAIL = %s",(reg_mail,))
+
+        cursor.execute(
+            "SELECT * FROM regis_table WHERE EMAIL = %s", (reg_mail,))
         dat = cursor.fetchall()
-        if(len(dat)>0):
+        if (len(dat) > 0):
             return render_template('exist_email.html')
         else:
             cursor.execute("INSERT INTO regis_table(NAME, EMAIL, PASSWORD) VALUES(%s, %s, %s)",
-                   (reg_user, reg_mail, reg_pass))
+                           (reg_user, reg_mail, reg_pass))
             conn.commit()
             return redirect("/reg")
 
@@ -154,14 +155,15 @@ def submit():
             Price = request.form["price"]
 
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO create_event(title, phone, datetime, location, description,price) VALUES (%s, %s, %s, %s, %s,%s)", (Title, Phone, Datetime, Location, Desc, Price))
+            cur.execute("INSERT INTO create_event(title, phone, datetime, location, description,price) VALUES (%s, %s, %s, %s, %s,%s)",
+                        (Title, Phone, Datetime, Location, Desc, Price))
             mysql.connection.commit()
 
             cursor = mysql.connection.cursor()
             cursor.execute("SELECT * FROM create_event")
             event_data = cursor.fetchall()
 
-            return render_template("shows-events.html", data=event_data, type = session['user_id'])
+            return render_template("shows-events.html", data=event_data, type=session['user_id'])
         else:
             return "Something went wrong"
     else:
@@ -180,7 +182,7 @@ def deletedata(id):
             cursor.execute("SELECT * FROM create_event")
             event_data = cursor.fetchall()
 
-            return render_template('shows-events.html', data=event_data, type = session['user_id'])
+            return render_template('shows-events.html', data=event_data, type=session['user_id'])
         else:
             return "Failed"
     else:
@@ -195,7 +197,7 @@ def editdata(id):
             cur.execute(f"SELECT * FROM create_event WHERE id={id}")
             data = cur.fetchall()
 
-            return render_template('edit_event.html', data=data, type = session['user_id'])
+            return render_template('edit_event.html', data=data, type=session['user_id'])
         else:
             return "Failed"
     else:
@@ -214,14 +216,15 @@ def updatedata(id):
             Price = request.form["price"]
 
             cur = mysql.connection.cursor()
-            cur.execute(f"UPDATE create_event set title = %s, phone = %s, datetime = %s, location = %s, description = %s, price = %s WHERE id = {id}", (Title, Phone, Datetime, Location, Desc, Price))
+            cur.execute(f"UPDATE create_event set title = %s, phone = %s, datetime = %s, location = %s, description = %s, price = %s WHERE id = {id}", (
+                Title, Phone, Datetime, Location, Desc, Price))
             mysql.connection.commit()
 
             cursor = mysql.connection.cursor()
             cursor.execute("SELECT * FROM create_event")
             event_data = cursor.fetchall()
 
-            return render_template("shows-events.html", data=event_data, type = session['user_id'])
+            return render_template("shows-events.html", data=event_data, type=session['user_id'])
         else:
             return "Failed"
     else:
@@ -238,7 +241,8 @@ def take_feedback():
             f_mail = request.form["u_email"]
             f_msg = request.form["u_feedback"]
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO feedback(fed_name, fed_email, fed_msg) VALUES (%s, %s, %s)", (f_name, f_mail, f_msg))
+            cur.execute(
+                "INSERT INTO feedback(fed_name, fed_email, fed_msg) VALUES (%s, %s, %s)", (f_name, f_mail, f_msg))
             mysql.connection.commit()
 
             cursor = mysql.connection.cursor()
@@ -246,7 +250,7 @@ def take_feedback():
             feedback_data = cursor.fetchall()
 
             flash("Feedback rececived!!", 'info')
-            return render_template("feedback.html", data=feedback_data, type = session['user_id'])
+            return render_template("feedback.html", data=feedback_data, type=session['user_id'])
         else:
             return "Feedback taking failed"
     else:
@@ -272,7 +276,7 @@ def dashboard():
         cursor.execute("SELECT SUM(no_of_tickets) FROM payment")
         parti_num = cursor.fetchall()
 
-        return render_template('dashboard.html', no_of_events=event_num, no_of_admins=admin_num, no_of_users=user_num, no_of_parti=parti_num, type = session['user_id'])
+        return render_template('dashboard.html', no_of_events=event_num, no_of_admins=admin_num, no_of_users=user_num, no_of_parti=parti_num, type=session['user_id'])
     else:
         return redirect('/')
 
@@ -288,12 +292,13 @@ def transaction():
             Tamount = request.form["amount"]
 
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO payment(event_name, no_of_tickets, person_name, amount) VALUES (%s, %s, %s, %s)",(Evename, Tcount, Tname, Tamount))
+            cur.execute("INSERT INTO payment(event_name, no_of_tickets, person_name, amount) VALUES (%s, %s, %s, %s)",
+                        (Evename, Tcount, Tname, Tamount))
             mysql.connection.commit()
 
-            return render_template('payment.html', type = session['user_id'])
+            return render_template('payment.html', type=session['user_id'])
         else:
-            return "Somthing went Wrong"
+            return "Something went Wrong"
     else:
         return redirect('/')
 
@@ -307,10 +312,9 @@ def retrive_payment(id):
         no_of_persons = request.form['quantity']
         amount = int(data[0][6]) * int(no_of_persons)
 
-        return render_template("transaction.html", data=data, qty=no_of_persons, amount=amount, type = session['user_id'])
+        return render_template("transaction.html", data=data, qty=no_of_persons, amount=amount, type=session['user_id'])
     else:
         return redirect('/')
-
 
 
 # Logging out of the account
@@ -322,4 +326,3 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
